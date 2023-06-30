@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Gotodo</title>
+    <link rel="stylesheet" type="text/css" href="/static/style.css">
+</head>
+<body>
+    <h1>Gotodo</h1>
+
+    <form action="/todos" method="POST">
+        <input type="text" name="Text" placeholder="Enter todo item" required>
+        <button type="submit" class="add">Add</button>
+    </form>
+
+    <ul class="todo-grid">
+        {{range .Todos}}
+            <li class="todo-item">
+                <span>{{.Text}}</span>
+                <form action="/todos/{{.ID}}/delete" method="POST" class="delete-form">
+                    <button type="submit" class="delete-button">Delete</button>
+                </form>
+            </li>
+        {{end}}
+    </ul>
+</body>
+</html>
