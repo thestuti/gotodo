@@ -78,3 +78,19 @@ button[type="submit"] {
     background-color: #ff5252;
     color: white;
 }
+
+.delete-all-button {
+    background-color: #ff5252;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    margin-top: 15px;
+    margin-right: 12px;
+}
+
+.delete-all-button:hover {
+    background-color: #c62828;
+}

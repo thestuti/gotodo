@@ -73,11 +73,17 @@ func deleteTodoHandler(w http.ResponseWriter, r *http.Request) {
 	http.Redirect(w, r, "/", http.StatusSeeOther)
 }
 
+func deleteAllHandler(w http.ResponseWriter, r *http.Request) {
+	todos.Todos = []Todo{}
+	http.Redirect(w, r, "/", http.StatusSeeOther)
+}
+
 func main() {
 	r := mux.NewRouter()
 	r.HandleFunc("/", indexHandler).Methods("GET")
 	r.HandleFunc("/todos", addTodoHandler).Methods("POST")
 	r.HandleFunc("/todos/{id}/delete", deleteTodoHandler).Methods("POST")
+	r.HandleFunc("/todos/deleteAll", deleteAllHandler).Methods("POST")
 
 	fs := http.FileServer(http.Dir("static"))
 	r.PathPrefix("/static/").Handler(http.StripPrefix("/static/", fs))
